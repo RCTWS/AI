@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحول الرقمي الذكي في إدارة الموارد المائية | الدليل التنفيذي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .tab-active {
+            border-bottom: 3px solid #0284c7;
+            color: #0284c7;
+            font-weight: 700;
+            background-color: #f0f9ff;
+        }
+        .step-card {
+            transition: all 0.25s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-2px);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-sky-200 selection:text-sky-900">
+
+<!-- Chosen Palette: Nile Teal & Warm Slate Neutrals (Light Background #f8fafc, Crisp White Cards #ffffff, Deep Nile Blue #0f172a, Water Cyan Accent #0284c7, Emerald Eco Accent #059669, Amber Alert #d97706) -->
+<!-- Application Structure Plan: Designed as an interactive Engineering Training & Execution Portal tailored for Ministry of Water Resources and Irrigation engineers. Instead of a passive linear scroll, the SPA organizes the 18 slides and technical research into 4 interactive thematic modules accessible via a sticky navigation bar: (1) Sovereign Data Security & Privacy Protocol (interactive risk triangle, live text sanitization simulator, step-by-step platform privacy guides), (2) Engineering Prompt Architecture (interactive 4-pillar prompt builder with hydraulic/legal presets, Chain-of-Thought FAO-56/Manning step visualizer, LLM comparison radar chart), (3) Automation & Cloud Tools (interactive Apps Script/Gemini workflow simulator, GitHub Pages + PWA + Firebase Firestore offline-first & security rules explorer), and (4) Capstone Project & Professional Charter (interactive 3-phase canal reporting system blueprint + interactive 4-point compliance checklist with official digital seal). Added a prominent download button in the sticky header linking directly to the Google Drive training material. -->
+<!-- Visualization & Content Choices: 1. Risk Triangle & Sanitization Simulator (HTML/CSS/JS) -> Goal: Demonstrate data leakage risks (Law 151/2020) and live redaction -> Interaction: Toggle between raw/sanitized irrigation reports & inspect legal penalties. 2. LLM Capability Matrix (Chart.js Radar Chart) -> Goal: Compare ChatGPT, Gemini, and Claude across Arabic fluency, massive context, and logical reasoning -> Interaction: Filter/highlight model strengths for specific ministry tasks -> Library: Chart.js Canvas. 3. Hydraulic Calculation Chain-of-Thought & Water Savings Impact (Chart.js Bar/Line Chart) -> Goal: Illustrate step-by-step Manning/FAO-56 calculation and automation time-savings (8 hrs to 10 sec) -> Interaction: Interactive crop water requirement calculator -> Library: Chart.js Canvas & Vanilla JS. 4. Architecture Flow & Checklist (Structured HTML/Tailwind + JS) -> Goal: Step-by-step technical guide for Apps Script, GitHub PWA, and Firebase Security Rules -> Interaction: Clickable pipeline nodes and interactive validation seal. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-3 gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-600 to-teal-700 text-white flex items-center justify-center text-2xl shadow-sm font-bold">
+                        🌊
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold tracking-wider text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200">وزارة الموارد المائية والري • الدليل التنفيذي</span>
+                        <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight mt-0.5">التحول الرقمي الذكي في إدارة الموارد المائية</h1>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-2.5">
+                    <div class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
+                        الشعار: <span class="text-sky-700 font-bold">"من الاستخدام التقليدي إلى الهندسة الذكية"</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1FSyN17A8Qa73g3togU9QCLsYrzwaF5mX/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-l from-sky-600 to-teal-600 hover:from-sky-700 hover:to-teal-700 text-white text-xs sm:text-sm font-bold shadow-sm transition-all transform hover:-translate-y-0.5">
+                        <span>📥</span>
+                        <span>تنزيل المادة العلمية</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="flex overflow-x-auto no-scrollbar border-t border-slate-100 -mx-4 px-4 sm:mx-0 sm:px-0" aria-label="الوحدات التدريبية">
+                <button onclick="switchModule('mod1')" id="nav-mod1" class="tab-active whitespace-nowrap px-4 py-3 text-sm font-semibold text-slate-600 hover:text-sky-700 transition-colors flex items-center gap-2">
+                    <span>🛡️</span> ١. الوعي الرقمي وأمن البيانات
+                </button>
+                <button onclick="switchModule('mod2')" id="nav-mod2" class="whitespace-nowrap px-4 py-3 text-sm font-semibold text-slate-600 hover:text-sky-700 transition-colors flex items-center gap-2">
+                    <span>⚙️</span> ٢. هندسة الأوامر للمهندسين
+                </button>
+                <button onclick="switchModule('mod3')" id="nav-mod3" class="whitespace-nowrap px-4 py-3 text-sm font-semibold text-slate-600 hover:text-sky-700 transition-colors flex items-center gap-2">
+                    <span>⚡</span> ٣. الأتمتة والتطوير السحابي
+                </button>
+                <button onclick="switchModule('mod4')" id="nav-mod4" class="whitespace-nowrap px-4 py-3 text-sm font-semibold text-slate-600 hover:text-sky-700 transition-colors flex items-center gap-2">
+                    <span>🚀</span> ٤. المشروع التكاملي والميثاق
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+        <section class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 pb-4 border-b border-slate-100">
+                <div>
+                    <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span>🧭</span> خارطة الطريق التنفيذية للبرنامج التدريبي
+                    </h2>
+                    <p class="text-sm text-slate-600 mt-1">
+                        قطاع المياه في مصر قضية أمن قومي. تهدف هذه المنصة التفاعلية إلى نقل المهندسين والإداريين من الاستخدام العشوائي للذكاء الاصطناعي إلى بناء أنظمة هندسية مؤتمتة وآمنة وفق أربع مراحل متكاملة.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200 shrink-0">
+                    <span>⚖️</span> متوافق مع قانون ١٥١ لسنة ٢٠٢٠ وقانون الري ١٤٧ لسنة ٢٠٢١
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+                <div onclick="switchModule('mod1')" class="cursor-pointer step-card p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-sky-400">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-sky-700">المرحلة ١: الدرع</span>
+                        <span class="text-lg">🔒</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">الأمن والبيانات السيادية</h3>
+                    <p class="text-xs text-slate-600 mt-1">تجهيل البيانات الحساسة وإغلاق ثغرات تدريب النماذج السحابية.</p>
+                </div>
+                <div onclick="switchModule('mod2')" class="cursor-pointer step-card p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-emerald-700">المرحلة ٢: السلاح</span>
+                        <span class="text-lg">🎯</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">إتقان هندسة الأوامر</h3>
+                    <p class="text-xs text-slate-600 mt-1">صياغة أوامر هيدروليكية وقانونية دقيقة وبناء مساعدات متخصصة.</p>
+                </div>
+                <div onclick="switchModule('mod3')" class="cursor-pointer step-card p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-amber-700">المرحلة ٣: المحرك</span>
+                        <span class="text-lg">⚙️</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">الأتمتة والتطوير اللاحجمي</h3>
+                    <p class="text-xs text-slate-600 mt-1">ربط البريد والمناسيب بـ Apps Script وبناء تطبيقات GitHub و Firebase.</p>
+                </div>
+                <div onclick="switchModule('mod4')" class="cursor-pointer step-card p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-rose-400">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs font-bold text-rose-700">المرحلة ٤: المنتج</span>
+                        <span class="text-lg">📱</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">المشروع التكاملي والميثاق</h3>
+                    <p class="text-xs text-slate-600 mt-1">إطلاق نظام بلاغات تطهير الترع والمصارف وتفعيل الميثاق المهني.</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="mod1" class="module-section space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200">الوحدة الأولى (الشرائح ١ - ٥)</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">الوعي الرقمي وأمن البيانات السيادية في قطاع الري</h2>
+                <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+                    تستعرض هذه الوحدة المخاطر الخفية لاستخدام النماذج اللغوية المجانية؛ حيث تصبح بيانات الوزارة هي "العملة" البديلة للمال عبر حلقات التغذية الراجعة. ستتعرف هنا على أضلاع "مثلث المخاطر"، وكيفية تطبيق بروتوكول التنقية (Sanitization)، والخطوات التقنية الدقيقة لإيقاف تدريب النماذج في أشهر المنصات العالمية.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span>⚠️</span> مثلث المخاطر في قطاع الموارد المائية
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">انقر على كل ضلع من أضلاع المثلث لاستعراض السيناريو الهندسي والعواقب القانونية.</p>
+                        
+                        <div class="grid grid-cols-3 gap-2 my-5">
+                            <button onclick="selectRisk(0)" id="risk-btn-0" class="p-3 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-900 text-center transition-all">
+                                <div class="text-xl mb-1">🔄</div>
+                                <div class="text-xs font-extrabold">١. إعادة الإنتاج</div>
+                            </button>
+                            <button onclick="selectRisk(1)" id="risk-btn-1" class="p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-rose-50 text-center transition-all">
+                                <div class="text-xl mb-1">🗺️</div>
+                                <div class="text-xs font-extrabold">٢. التعرض الاستراتيجي</div>
+                            </button>
+                            <button onclick="selectRisk(2)" id="risk-btn-2" class="p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-rose-50 text-center transition-all">
+                                <div class="text-xl mb-1">⚖️</div>
+                                <div class="text-xs font-extrabold">٣. المساءلة القانونية</div>
+                            </button>
+                        </div>
+
+                        <div id="risk-detail-box" class="p-4 rounded-xl bg-rose-50/70 border border-rose-200 space-y-2">
+                            <h4 id="risk-title" class="font-bold text-rose-900 text-sm">إعادة الإنتاج (Data Regurgitation)</h4>
+                            <p id="risk-desc" class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                                عندما يرفع مهندس جدول ميزانية مشروع تبطين ترعة الإبراهيمية لتلخيصه، قد يسترجع النموذج هذه الأرقام الدقيقة غداً عند سؤال مقاول أو جهة خارجية عن تكاليف تبطين الترع في مصر.
+                            </p>
+                            <div id="risk-law" class="text-xs font-semibold text-rose-800 bg-white p-2.5 rounded-lg border border-rose-200">
+                                📌 الأثر: خروج التقديرات المالية والهندسية من سيطرة الدولة إلى "عقل" سحابي تملكه شركات خاصة.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 flex items-center justify-between">
+                        <span>المرجع التشريعي: قانون ١٥١ لسنة ٢٠٢٠</span>
+                        <span class="font-bold text-rose-700">غرامة تصل إلى ٥ مليون جنيه</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                <span>🧪</span> محاكي بروتوكول تنقية وتجهيل البيانات (Sanitization)
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">قارن بين النص الخام المحظور إدخاله، والنص المنقّى الآمن هندسياً وقانونياً.</p>
+                        </div>
+                        <div class="flex bg-slate-100 p-1 rounded-lg border border-slate-200 shrink-0">
+                            <button onclick="setSanitizeExample('budget')" id="san-tab-budget" class="px-3 py-1 text-xs font-bold rounded-md bg-white text-sky-700 shadow-sm">مثال الميزانية</button>
+                            <button onclick="setSanitizeExample('station')" id="san-tab-station" class="px-3 py-1 text-xs font-bold rounded-md text-slate-600">مثال محطة الرفع</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-rose-50/60 border border-rose-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-extrabold text-rose-700 flex items-center gap-1">❌ قبل التنقية (ممنوع الإدخال)</span>
+                                <span class="text-[11px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-semibold">بيانات سيادية صريحة</span>
+                            </div>
+                            <p id="raw-text-box" class="text-xs sm:text-sm text-slate-800 leading-relaxed bg-white p-3 rounded-lg border border-rose-200 min-h-[115px]">
+                                "مطلوب إعداد مذكرة عاجلة لمشروع تأهيل وتبطين ترعة الإبراهيمية بطول ٤٢ كم في نطاق محافظة أسيوط، علماً بأن الاعتماد المالي المخصص يبلغ ٥٢٠ مليون جنيه مصري، والمنسوب التصميمي عند الفم ١٨.٤٥ متر."
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-extrabold text-emerald-700 flex items-center gap-1">✅ بعد التجهيل والتعميم (آمن)</span>
+                                <span class="text-[11px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">جاهز للمعالجة</span>
+                            </div>
+                            <p id="clean-text-box" class="text-xs sm:text-sm text-slate-800 leading-relaxed bg-white p-3 rounded-lg border border-emerald-200 min-h-[115px]">
+                                "مطلوب إعداد مذكرة عاجلة لمشروع تأهيل وتبطين [المجرى المائي أ] بطول [L كم] في [نطاق إقليمي]، علماً بأن الاعتماد المالي المخصص يبلغ [التكلفة X]، والمنسوب التصميمي عند الفم [منسوب Y]."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                            <span class="font-bold text-sky-800 block mb-1">١. التجهيل (Anonymization):</span>
+                            <span class="text-slate-600">استبدال الأسماء الصريحة للمنشآت (محطة رفع المكس / قناطر أسيوط) برموز مجردة (المحطة أ / المنشأة الإقليمية).</span>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                            <span class="font-bold text-sky-800 block mb-1">٢. التعميم (Generalization):</span>
+                            <span class="text-slate-600">تحويل الأرقام المالية الدقيقة والإحداثيات الجغرافية الحساسة إلى نسب مئوية أو متغيرات رمزية (X, Y).</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span>🔐</span> الدليل العملي خطوة بخطوة: إيقاف تدريب النماذج (Model Training)
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                            اختر المنصة الذكية لعرض المسار الدقيق لتعطيل حفظ السجلات ومنع استخدام مدخلات المهندسين في تدريب الخوارزميات.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="showPrivacyGuide('chatgpt')" id="priv-btn-chatgpt" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white shadow-sm">ChatGPT (OpenAI)</button>
+                        <button onclick="showPrivacyGuide('gemini')" id="priv-btn-gemini" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">Google Gemini</button>
+                        <button onclick="showPrivacyGuide('claude')" id="priv-btn-claude" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">Anthropic Claude</button>
+                    </div>
+                </div>
+
+                <div id="privacy-steps-container" class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+                </div>
+            </div>
+        </div>
+
+        <div id="mod2" class="module-section hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">الوحدة الثانية (الشرائح ٦ - ١٠)</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">هندسة الأوامر (Prompt Engineering) للمهندسين</h2>
+                <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+                    الذكاء الاصطناعي يشبه المهندس حديث التخرج؛ يحتاج إلى توجيه محكم لتجنب "الهلوسة" الحسابية أو القانونية. تتيح لك هذه الوحدة بناء أوامر احترافية وفق المعادلة الرباعية، وتجربة تقنية "سلسلة التفكير" في حساب المقننات المائية ومعادلة مانينج، ومقارنة قدرات النماذج، وخطوات بناء مساعد قانوني مخصص (Custom GPT).
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span>🧱</span> أداة بناء الأمر الهندسي الاحترافي (المعادلة الرباعية)
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">اختر قالباً جاهزاً من مهام الوزارة أو عدّل الخانات الأربعة لتوليد أمر برمجي متكامل.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="loadPromptPreset('legal')" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100">قالب: إنذار تعدي على جسر ترعة</button>
+                        <button onclick="loadPromptPreset('hydraulic')" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100">قالب: حساب تصرف مانينج (CoT)</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3 rounded-xl bg-sky-50/70 border border-sky-200">
+                            <label class="text-xs font-extrabold text-sky-900 block mb-1">١. الدور (Role)</label>
+                            <textarea id="p-role" oninput="updateGeneratedPrompt()" rows="2" class="w-full text-xs p-2 rounded-lg border border-sky-200 bg-white focus:outline-none focus:border-sky-500">أنت مستشار قانوني وهندسي خبير في قانون الموارد المائية والري المصري رقم ١٤٧ لسنة ٢٠٢١.</textarea>
+                        </div>
+                        <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                            <label class="text-xs font-extrabold text-emerald-900 block mb-1">٢. السياق (Context)</label>
+                            <textarea id="p-context" oninput="updateGeneratedPrompt()" rows="2" class="w-full text-xs p-2 rounded-lg border border-emerald-200 bg-white focus:outline-none focus:border-emerald-500">نحن بصدد مراجعة محضر مخالفة إقامة مبنى بدون ترخيص على جسر [الترعة أ] مما يعيق أعمال التطهير الدورية.</textarea>
+                        </div>
+                        <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200">
+                            <label class="text-xs font-extrabold text-amber-900 block mb-1">٣. المهمة (Task)</label>
+                            <textarea id="p-task" oninput="updateGeneratedPrompt()" rows="2" class="w-full text-xs p-2 rounded-lg border border-amber-200 bg-white focus:outline-none focus:border-amber-500">صغ مسودة خطاب إنذار إداري بالإزالة الفورية موجه للمخالف مع الإشارة للمواد القانونية الحاكمة.</textarea>
+                        </div>
+                        <div class="p-3 rounded-xl bg-purple-50/70 border border-purple-200">
+                            <label class="text-xs font-extrabold text-purple-900 block mb-1">٤. المحددات (Constraints)</label>
+                            <textarea id="p-constraints" oninput="updateGeneratedPrompt()" rows="2" class="w-full text-xs p-2 rounded-lg border border-purple-200 bg-white focus:outline-none focus:border-purple-500">استخدم لغة حكومية رسمية حازمة، في صفحة واحدة، واختم بجدول يلخص الإجراءات الزمنية للإزالة.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-slate-900 text-slate-100 rounded-xl p-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-700">
+                                <span class="text-xs font-bold text-sky-400">✨ الأمر النهائي المُجمّع (جاهز للنسخ)</span>
+                                <button onclick="copyPromptText()" id="copy-prompt-btn" class="text-xs bg-sky-600 hover:bg-sky-500 text-white px-2.5 py-1 rounded font-bold transition-colors">نسخ الأمر</button>
+                            </div>
+                            <p id="final-prompt-output" class="text-xs sm:text-sm leading-relaxed text-slate-200 whitespace-pre-line"></p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] text-slate-400">
+                            💡 نصيحة: أضف دائماً عبارة "فكر خطوة بخطوة" (Chain of Thought) في المهام الحسابية.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span>⚙️</span> تطبيق سلسلة التفكير (Chain of Thought): المقنن المائي
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1 mb-4">
+                        بدلاً من طلب الرقم النهائي مباشرة، نجبر النموذج على تطبيق منهجية (FAO 56) خطوة بخطوة لتجنب الهلوسة. جرّب تغيير المساحة والمحصول:
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 mb-4 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <div>
+                            <label class="text-xs font-bold text-slate-700 block mb-1">اختر المحصول:</label>
+                            <select id="crop-select" onchange="calculateWaterCoT()" class="w-full text-xs p-2 rounded-lg border border-slate-300 bg-white font-semibold">
+                                <option value="wheat">القمح الشتوي (Kc = 1.15)</option>
+                                <option value="maize">الذرة الشامية (Kc = 1.20)</option>
+                                <option value="cotton">القطن المصري (Kc = 1.15)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-700 block mb-1">المساحة المنزرعة (فدان):</label>
+                            <input type="number" id="area-input" value="100" min="1" max="50000" oninput="calculateWaterCoT()" class="w-full text-xs p-2 rounded-lg border border-slate-300 bg-white font-bold">
+                        </div>
+                    </div>
+
+                    <div id="cot-steps-output" class="space-y-2.5 text-xs">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span>📊</span> مصفوفة اختيار النموذج الذكي الأنسب لمهام الوزارة
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            مقارنة تخصصية بين النماذج الثلاثة لتوجيه كل مهمة هندسية أو إدارية للأداة الأكثر كفاءة.
+                        </p>
+                    </div>
+
+                    <div class="chart-container my-2">
+                        <canvas id="modelsRadarChart"></canvas>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs pt-2 border-t border-slate-100">
+                        <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-200">
+                            <span class="font-extrabold text-emerald-900 block">ChatGPT</span>
+                            <span class="text-[11px] text-emerald-700">العقل المنطقي وتحليل القوانين</span>
+                        </div>
+                        <div class="p-2 rounded-lg bg-sky-50 border border-sky-200">
+                            <span class="font-extrabold text-sky-900 block">Google Gemini</span>
+                            <span class="text-[11px] text-sky-700">الملفات الضخمة و Workspace</span>
+                        </div>
+                        <div class="p-2 rounded-lg bg-amber-50 border border-amber-200">
+                            <span class="font-extrabold text-amber-900 block">Claude</span>
+                            <span class="text-[11px] text-amber-700">المذكرات الرسمية واللغة الرصينة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <span>🤖</span> خطوات بناء مساعد ذكي متخصص (Custom GPT / Gem) لقوانين الري
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 mb-4">
+                    الانتقال من مجرد مستخدم إلى "مطور" عبر حصر إجابات الذكاء الاصطناعي في الأكواد الهندسية وقانون الري ١٤٧ لسنة ٢٠٢١ دون اللجوء لمعلومات الإنترنت العامة.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-2 py-0.5 rounded">الخطوة ١</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-2">تجهيز قاعدة المعرفة (Knowledge)</h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">تجميع ملفات PDF الرسمية: قانون الري ١٤٧ لسنة ٢٠٢١، اللائحة التنفيذية، والكود المصري لتصميم القناطر والترع (بعد تنقيتها من أي بيانات سرية).</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-2 py-0.5 rounded">الخطوة ٢</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-2">إنشاء المساعد (Create GPT)</h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">الدخول إلى تبويب Explore GPTs ثم الضغط على Create، وتسميته مثلاً: "المستشار الهندسي والقانوني لقطاع الري".</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-2 py-0.5 rounded">الخطوة ٣</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-2">صياغة تعليمات الحصر (Instructions)</h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">كتابة أمر صارم: "اعتمد حصرياً على الملفات المرفقة في Knowledge. اذكر رقم المادة أو رقم الصفحة في الكود مع كل إجابة. إذا لم تجد المعلومة قل: غير متوفر بالوثائق".</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-2 py-0.5 rounded">الخطوة ٤</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-2">تعطيل تصفح الويب والاختبار</h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">إلغاء تفعيل Web Search لضمان عدم خلط القوانين المصرية بقوانين دول أخرى، ثم اختبار البوت بسؤال عن عقوبة إقامة آلة رفع مياه مخالفة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mod3" class="module-section hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">الوحدة الثالثة (الشرائح ١١ - ١٦)</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">الأتمتة وتطوير الأدوات الرقمية السحابية (No-Code & Cloud)</h2>
+                <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+                    هنا ننتقل بالذكاء الاصطناعي من "المحادثة" إلى "التنفيذ الفعلي". ستتعلم خطوات ربط البريد الإلكتروني (Gmail) وجداول المناسيب (Sheets) باستخدام Google Apps Script و Gemini API، وبناء تطبيقات ميدانية بدون خبرة برمجية، ونشرها مجاناً على GitHub Pages كـ PWA تعمل بدون إنترنت، وربطها لحظياً بقاعدة بيانات Firebase.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span>⏱️</span> أثر الأتمتة على كفاءة العمليات الإدارية
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            مقارنة الزمن المستغرق (بالدقائق) قبل وبعد تطبيق أتمتة Gemini & Workspace على مهام الإدارة اليومية.
+                        </p>
+                    </div>
+                    <div class="chart-container my-3">
+                        <canvas id="automationBarChart"></canvas>
+                    </div>
+                    <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
+                        ⚡ <strong>النتيجة:</strong> تحويل فرز وتصنيف ٥٠٠ شكوى مياه أسبوعياً من ٨ ساعات عمل يدوي إلى ١٠ ثوانٍ فقط مع استخراج جدول بالقرى المتضررة.
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                <span>🔄</span> محاكي مسار الأتمتة الذكي (Function Calling & Triggers)
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">اضغط على "تشغيل المحاكاة" لمشاهدة كيف يحول النظام بلاغاً عشوائياً إلى تذكرة صيانة وتنبيه مدير الإدارة.</p>
+                        </div>
+                        <button onclick="runAutomationSim()" class="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-sm shrink-0">
+                            ▶ تشغيل المحاكاة الحية
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-xs font-bold text-slate-700 block mb-1">١. المدخل الخام (بريد إلكتروني / بلاغ مواطن):</span>
+                            <input type="text" id="sim-complaint-input" value="يوجد انسداد كامل بالحشائش وورد النيل عند الكيلو ٥ في ترعة المحمودية مما أدى لانخفاض المنسوب بنسبة ٨٪ عن المقرر." class="w-full text-xs p-2 rounded-lg border border-slate-300 bg-white">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="p-3 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs overflow-x-auto">
+                                <div class="text-slate-400 font-sans font-bold mb-1">٢. مخرج استدعاء الدوال (JSON Structured):</div>
+                                <pre id="sim-json-output" class="leading-relaxed">{
+  "status": "في انتظار التشغيل..."
+}</pre>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-sky-50 border border-sky-200 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-xs font-bold text-sky-900 block mb-1">٣. الإجراء التنفيذي والمُشغّل الآلي (Trigger):</span>
+                                    <div id="sim-action-output" class="text-xs text-slate-700 leading-relaxed">
+                                        اضغط على زر تشغيل المحاكاة لمعالجة البلاغ وتوليد تذكرة الصيانة وفحص عتبة انحراف المنسوب (٥٪).
+                                    </div>
+                                </div>
+                                <div id="sim-alert-badge" class="hidden mt-2 p-2 rounded-lg bg-rose-600 text-white text-xs font-bold text-center">
+                                    🚨 تنبيه عاجل: تم إرسال إيميل تحذيري لمدير الإدارة (الانحراف > ٥٪)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-wrap gap-2 pb-4 border-b border-slate-200">
+                    <button onclick="switchTechTab('appsscript')" id="tech-tab-appsscript" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white">١. خطوات Google Apps Script & Triggers</button>
+                    <button onclick="switchTechTab('github')" id="tech-tab-github" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">٢. خطوات النشر GitHub Pages + PWA</button>
+                    <button onclick="switchTechTab('firebase')" id="tech-tab-firebase" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">٣. خطوات Firebase Offline & Security Rules</button>
+                </div>
+
+                <div id="tech-tab-content" class="mt-5">
+                </div>
+            </div>
+        </div>
+
+        <div id="mod4" class="module-section hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md border border-rose-200">الوحدة الرابعة (الشرائح ١٧ - ١٨)</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">المشروع التكاملي والميثاق المهني للتحول الرقمي</h2>
+                <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+                    تتويجاً للبرنامج التدريبي، يدمج المشروع التكاملي كافة المهارات لبناء "نظام بلاغات تطهير الترع والمصارف". استعرض خطوات التنفيذ الثلاث أدناه، ثم أكمل قائمة المراجعة المهنية للحصول على ختم الاعتماد الأمني والتقني.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <span>🏗️</span> مخطط تنفيذ المشروع التكاملي: نظام بلاغات تطهير الترع والمصارف
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="p-5 rounded-2xl bg-gradient-to-b from-sky-50 to-white border border-sky-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-8 h-8 rounded-lg bg-sky-600 text-white font-extrabold flex items-center justify-center text-sm">١</span>
+                                <span class="text-xs font-bold text-sky-700 bg-sky-100 px-2.5 py-1 rounded-full">الواجهة الأمامية (No-Code)</span>
+                            </div>
+                            <h4 class="font-extrabold text-slate-900 text-base">توليد واجهة البلاغات بالذكاء الاصطناعي</h4>
+                            <ul class="text-xs text-slate-600 space-y-2 mt-3 list-disc list-inside leading-relaxed">
+                                <li>صياغة أمر لـ <strong>Gemini أو Claude</strong> لبناء صفحة HTML متجاوبة للهواتف الميدانية.</li>
+                                <li>تضمين حقول: اسم الترعة/المصرف، الكيلو، نوع العائق (حشائش/تعدي/انهيار جسر)، وزر التقاط الإحداثيات GPS.</li>
+                                <li>تطبيق التصميم النظيف باستخدام Tailwind CSS لدعم اللغة العربية (RTL).</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-sky-100 text-xs font-bold text-sky-800">
+                            المخرج: ملف index.html جاهز
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-b from-amber-50 to-white border border-amber-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-8 h-8 rounded-lg bg-amber-600 text-white font-extrabold flex items-center justify-center text-sm">٢</span>
+                                <span class="text-xs font-bold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full">السحابة والأمان (Firebase)</span>
+                            </div>
+                            <h4 class="font-extrabold text-slate-900 text-base">الربط اللحظي بقاعدة البيانات Firestore</h4>
+                            <ul class="text-xs text-slate-600 space-y-2 mt-3 list-disc list-inside leading-relaxed">
+                                <li>إنشاء مشروع Firebase وتضمين حزمة <strong>SDK v10</strong> ودالة التخزين <code>addDoc</code>.</li>
+                                <li>تفعيل <code>enableIndexedDbPersistence</code> لحفظ البلاغات أثناء انقطاع الإنترنت في الحقول ومزامنتها تلقائياً.</li>
+                                <li>كتابة <strong>Security Rules</strong> للتحقق من صحة البيانات ومنع التلاعب أو الحذف.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-amber-100 text-xs font-bold text-amber-800">
+                            المخرج: قاعدة بيانات لحظية مؤمّنة
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-b from-emerald-50 to-white border border-emerald-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white font-extrabold flex items-center justify-center text-sm">٣</span>
+                                <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">النشر الميداني (GitHub PWA)</span>
+                            </div>
+                            <h4 class="font-extrabold text-slate-900 text-base">النشر السحابي وتحويله لتطبيق هاتف</h4>
+                            <ul class="text-xs text-slate-600 space-y-2 mt-3 list-disc list-inside leading-relaxed">
+                                <li>رفع الملفات إلى مستودع <strong>GitHub</strong> وتفعيل <strong>GitHub Pages</strong> للحصول على رابط مجاني.</li>
+                                <li>إضافة ملف <code>manifest.json</code> وملف <code>sw.js</code> لتثبيت التطبيق على هواتف مهندسي الري.</li>
+                                <li>ربط لوحة تحكم الإدارة المركزية لاستعراض البلاغات فور إرسالها من المحافظات.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-emerald-100 text-xs font-bold text-emerald-800">
+                            المخرج: تطبيق ويب ميداني متكامل
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <div class="lg:col-span-8 space-y-3">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <span>📜</span> الميثاق المهني: قائمة المراجعة النهائية قبل أي استخدام
+                        </h3>
+                        <p class="text-xs text-slate-500">
+                            قم بتأكيد التزامك بالضوابط الأربعة التالية لتفعيل ختم الجاهزية الهندسية والأمنية:
+                        </p>
+
+                        <div class="space-y-2.5 pt-2">
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="checkbox" onchange="updateCharterStatus()" class="charter-check mt-1 w-4 h-4 accent-emerald-600">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-900 block">١. هل أوقفت خاصية التدريب وحفظ السجلات؟ 🔒</span>
+                                    <span class="text-xs text-slate-600">التأكد من تعطيل "تحسين النموذج للجميع" في ChatGPT وإيقاف نشاط تطبيقات Gemini.</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="checkbox" onchange="updateCharterStatus()" class="charter-check mt-1 w-4 h-4 accent-emerald-600">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-900 block">٢. هل قمت بتجهيل وتعميم البيانات الحساسة؟ 🛡️</span>
+                                    <span class="text-xs text-slate-600">إزالة أسماء المنشآت السيادية والأرقام المالية الدقيقة امتثالاً لقانون ١٥١ لسنة ٢٠٢٠.</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="checkbox" onchange="updateCharterStatus()" class="charter-check mt-1 w-4 h-4 accent-emerald-600">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-900 block">٣. هل استخدمت هيكل الأمر الاحترافي وسلسلة التفكير؟ ⚙️</span>
+                                    <span class="text-xs text-slate-600">الالتزام بـ (الدور + السياق + المهمة + المحددات) وطلب الحل خطوة بخطوة لمنع الهلوسة.</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="checkbox" onchange="updateCharterStatus()" class="charter-check mt-1 w-4 h-4 accent-emerald-600">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-900 block">٤. هل استند المساعد الذكي إلى الوثائق الرسمية المعتمدة؟ 📚</span>
+                                    <span class="text-xs text-slate-600">حصر الاستشارات القانونية والهندسية في قانون الري ١٤٧ لسنة ٢٠٢١ والأكواد المصرية المرفوعة.</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 text-center min-h-[260px]" id="charter-seal-box">
+                        <div id="seal-icon" class="text-5xl mb-3 opacity-40 transition-all duration-300">🛡️</div>
+                        <h4 id="seal-title" class="font-extrabold text-slate-500 text-base">في انتظار استيفاء الميثاق</h4>
+                        <p id="seal-desc" class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                            يرجى مراجعة وتأكيد البنود الأربعة المجاورة لإصدار شارة الامتثال الأمني والهندسي.
+                        </p>
+                        <div class="mt-4 w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                            <div id="charter-progress-bar" class="bg-emerald-600 h-2 transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                        <span id="charter-progress-text" class="text-xs font-bold text-slate-600 mt-2">تم إنجاز ٠ من ٤ ضوابط</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+            <div>
+                <span class="font-bold text-slate-800">البرنامج التدريبي: التحول الرقمي الذكي في إدارة الموارد المائية</span> • جمهورية مصر العربية
+            </div>
+            <div>
+                أُعدّ وفق المرجعية التنفيذية لأمن البيانات السيادية وهندسة الذكاء الاصطناعي
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const riskData = [
+            {
+                title: "١. إعادة الإنتاج (Data Regurgitation)",
+                desc: "عندما يرفع مهندس جدول ميزانية 'مشروع تبطين ترعة الإبراهيمية' ليطلب تلخيصه، قد يقوم النموذج غداً باسترجاع هذه البيانات الحقيقية وتقديمها لمقاول أو جهة خارجية تستفسر عن تكاليف تبطين الترع في مصر.",
+                law: "📌 الأثر: تحول المستندات الداخلية إلى جزء من قاعدة معرفة عامة يستفيد منها أطراف خارجيون."
+            },
+            {
+                title: "٢. التعرض الاستراتيجي للبنية التحتية",
+                desc: "تسريب الخرائط الجغرافية، إحداثيات محطات الرفع الرئيسية، مناسيب السدود والقناطر، أو نقاط الضعف الهيدروليكية في الشبكات يمثل تهديداً مباشراً للأمن المائي القومي.",
+                law: "📌 الأثر: انكشاف البيانات السيادية الحرجة أمام جهات غير مصرح لها."
+            },
+            {
+                title: "٣. المساءلة القانونية والجنائية",
+                desc: "يُحظر بموجب قانون حماية البيانات الشخصية المصري رقم ١٥١ لسنة ٢٠٢٠ نقل أو معالجة البيانات السيادية خارج الحدود دون تصريح، كما يفرض المركز الوطني (EG-CERT) ضوابط صارمة لحماية البنية التحتية.",
+                law: "⚖️ العقوبة: غرامات مالية تصل إلى ٥ ملايين جنيه مصري والمساءلة الجنائية عند الإضرار بالأمن القومي."
+            }
+        ];
+
+        const sanitizeExamples = {
+            budget: {
+                raw: "مطلوب إعداد مذكرة عاجلة لمشروع تأهيل وتبطين ترعة الإبراهيمية بطول ٤٢ كم في نطاق محافظة أسيوط، علماً بأن الاعتماد المالي المخصص يبلغ ٥٢٠ مليون جنيه مصري، والمنسوب التصميمي عند الفم ١٨.٤٥ متر.",
+                clean: "مطلوب إعداد مذكرة عاجلة لمشروع تأهيل وتبطين [المجرى المائي أ] بطول [L كم] في [نطاق إقليمي]، علماً بأن الاعتماد المالي المخصص يبلغ [التكلفة X]، والمنسوب التصميمي عند الفم [منسوب Y]."
+            },
+            station: {
+                raw: "تقرير أعطال محطة رفع المكس الرئيسية بالإسكندرية: توقف الوحدة رقم ٣ (تصرف ١٢.٥ م٣/ث) بسبب ارتفاع منسوب المصب عند الإحداثي 31.145N, 29.842E بتكلفة إصلاح تقديرية ١٤.٨ مليون جنيه.",
+                clean: "تقرير أعطال [المنشأة الهيدروليكية ب]: توقف وحدة ضخ (تصرف Q م٣/ث) بسبب ارتفاع منسوب المصب بنسبة [١٥٪ عن المعتاد] بتكلفة إصلاح تقديرية [نسبة ٢.٥٪ من الميزانية السنوية]."
+            }
+        };
+
+        const privacyGuides = {
+            chatgpt: [
+                {
+                    step: "الخطوة ١: إعدادات الواجهة",
+                    title: "تعطيل تحسين النموذج",
+                    desc: "افتح القائمة الجانبية واضغط على اسم الحساب ← اختر Settings ← انتقل إلى Data Controls ← أوقف خيار 'Improve the model for everyone'."
+                },
+                {
+                    step: "الخطوة ٢: بوابة الخصوصية",
+                    title: "الاستبعاد الكامل (Privacy Portal)",
+                    desc: "لا يُكتفى بالواجهة؛ ادخل إلى بوابة الخصوصية (privacy.openai.com) واختر 'Do not train on my content' لإخراج الحساب نهائياً من التدريب."
+                },
+                {
+                    step: "الخطوة ٣: الاستخدام اليومي",
+                    title: "المحادثة المؤقتة (Temporary Chat)",
+                    desc: "فعّل خيار Temporary Chat من أعلى الشاشة عند معالجة المسائل الاستشارية لضمان عدم حفظها في سجل المحادثات."
+                }
+            ],
+            gemini: [
+                {
+                    step: "الخطوة ١: إعدادات النشاط",
+                    title: "إيقاف Gemini Apps Activity",
+                    desc: "في تطبيق الويب، اضغط على الإعدادات والمساعدة (Settings & help) أسفل القائمة ← اختر Gemini Apps Activity."
+                },
+                {
+                    step: "الخطوة ٢: تعطيل الحفظ",
+                    title: "اختيار Turn Off",
+                    desc: "اضغط على زر الإيقاف (Turn off) أو اختر 'Turn off and delete activity' لمنع ربط استفساراتك بحسابك وتدريب النماذج."
+                },
+                {
+                    step: "الخطوة ٣: تنبيه أمني هام",
+                    title: "قاعدة الـ ٧٢ ساعة والتقييمات",
+                    desc: "تُحفظ البيانات مؤقتاً لمدة ٧٢ ساعة للفحص الأمني فقط دون تدريب، بشرط عدم الضغط على أزرار التقييم (Thumbs up/down) للمحتوى الحساس."
+                }
+            ],
+            claude: [
+                {
+                    step: "الخطوة ١: إعدادات الخصوصية",
+                    title: "الدخول إلى تبويب Privacy",
+                    desc: "اضغط على أيقونة الحساب في الزاوية السفلية ← اختر Settings ← انتقل مباشرة إلى قسم الخصوصية (Privacy)."
+                },
+                {
+                    step: "الخطوة ٢: إيقاف التدريب",
+                    title: "إلغاء تفعيل تدريب البيانات",
+                    desc: "تأكد من إغلاق المفتاح الخاص بالسماح باستخدام المحادثات الشخصية في تحسين وتدريب نماذج Anthropic."
+                },
+                {
+                    step: "الخطوة ٣: بروتوكول التفاعل",
+                    title: "تجنب إرسال الملاحظات (Feedback)",
+                    desc: "لا تستخدم أزرار الإعجاب أو الرفض على المخرجات الهندسية، لأن إرسال التقييم يرسل نسخة من المحادثة لفريق المراجعة."
+                }
+            ]
+        };
+
+        const techTabsContent = {
+            appsscript: `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    <div class="lg:col-span-6 space-y-3">
+                        <h4 class="font-bold text-slate-900 text-base">خطوات أتمتة Gmail و Sheets باستخدام Apps Script:</h4>
+                        <ol class="text-xs sm:text-sm text-slate-700 space-y-2.5 list-decimal list-inside leading-relaxed">
+                            <li><strong>فتح محرر الأكواد:</strong> من داخل جدول Google Sheets، اختر من القائمة العلوية <code>Extensions &gt; Apps Script</code>.</li>
+                            <li><strong>تأمين مفتاح API:</strong> لا تكتب مفتاح Gemini API داخل الكود! اذهب إلى <code>Project Settings &gt; Script Properties</code> وأضف متغيراً باسم <code>GEMINI_KEY</code>.</li>
+                            <li><strong>استدعاء الذكاء الاصطناعي:</strong> استخدم دالة <code>UrlFetchApp.fetch()</code> لإرسال نص الشكوى بصيغة JSON واستقبال التصنيف والقرية المتضررة.</li>
+                            <li><strong>تثبيت المُشغّل الآلي (Installable Trigger):</strong> من القائمة الجانبية اختر أيقونة المنبه (Triggers) ← اضغط <code>+ Add Trigger</code> ← اختر الحدث <code>On edit</code> أو مجدول زمنياً (Time-driven) كل صباح لإرسال تنبيهات <code>MailApp.sendEmail</code> عند انحراف المناسيب.</li>
+                        </ol>
+                    </div>
+                    <div class="lg:col-span-6 bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs overflow-x-auto">
+                        <div class="text-sky-400 font-sans font-bold mb-2">نموذج الكود الآمن (Google Apps Script):</div>
+                        <pre class="leading-relaxed text-emerald-300">function analyzeWaterComplaints() {
+  const apiKey = PropertiesService.getScriptProperties().getProperty('GEMINI_KEY');
+  const threads = GmailApp.search('is:unread label:شكاوى_الري');
+  
+  threads.forEach(thread => {
+    const msg = thread.getMessages()[0].getPlainBody();
+    const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
+    const payload = {
+      contents: [{ parts: [{ text: "استخرج اسم القرية ودرجة الخطورة بصيغة JSON: " + msg }] }]
+    };
+    const res = UrlFetchApp.fetch(url, {
+      method: "post", contentType: "application/json", payload: JSON.stringify(payload)
+    });
+  });
+}</pre>
+                    </div>
+                </div>
+            `,
+            github: `
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-2 py-0.5 rounded">الخطوة ١: المستودع</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-2">إنشاء Repository ورفع الملفات</h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">أنشئ حساباً على GitHub واضغط New Repository (مثلاً <code>mowi-calc</code>). ارفع ملفات التطبيق المولدة بالذكاء الاصطناعي (<code>index.html</code>).</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">الخطوة ٢: النشر المجاني</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-2">تفعيل GitHub Pages</h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">ادخل إلى <code>Settings &gt; Pages</code>، ومن قائمة Branch اختر <code>main</code> ثم Save. خلال ثوانٍ ستحصل على رابط مباشر يعمل على أي هاتف.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                        <span class="text-xs font-extrabold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">الخطوة ٣: العمل بدون إنترنت</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-2">تحويله إلى تطبيق PWA</h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">اطلب من AI توليد ملفي <code>manifest.json</code> و <code>sw.js</code> (Service Worker) لتخزين الواجهة محلياً (Cache-First) ليعمل التطبيق في الحقول بدون شبكة.</p>
+                    </div>
+                </div>
+            `,
+            firebase: `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    <div class="lg:col-span-6 space-y-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        <h4 class="font-bold text-slate-900 text-base">الربط اللحظي وحماية بيانات الوزارة (Firestore):</h4>
+                        <p><strong>١. التهيئة والتخزين الميداني (Offline Persistence):</strong> عند استخدام <code>Firebase SDK v10</code>، نضيف دالة <code>enableIndexedDbPersistence(db)</code> لحفظ قراءات المناسيب داخل متصفح المهندس أثناء انقطاع الإنترنت ومزامنتها تلقائياً فور عودة الشبكة.</p>
+                        <p><strong>٢. لماذا لا نخفي API Key؟</strong> مفاتيح Firebase في تطبيقات الويب عامة بطبيعتها؛ لذا تعتمد الحماية الفعلية بنسبة ١٠٠٪ على كتابة <strong>قواعد أمان صارمة (Security Rules)</strong> تمنع الحذف والتعديل وتتحقق من نوع وطول كل حقل هندسي.</p>
+                    </div>
+                    <div class="lg:col-span-6 bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs overflow-x-auto">
+                        <div class="text-amber-400 font-sans font-bold mb-2">قواعد أمان Firestore المانعة للاختراق (Security Rules):</div>
+                        <pre class="leading-relaxed text-sky-300">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /canal_reports/{reportId} {
+      allow create: if request.resource.data.canalName is string
+                    && request.resource.data.canalName.size() > 2
+                    && request.resource.data.canalName.size() < 100
+                    && request.resource.data.createdAt is timestamp;
+      allow update, delete: if false;
+    }
+  }
+}</pre>
+                    </div>
+                </div>
+            `
+        };
+
+        function switchModule(modId) {
+            document.querySelectorAll('.module-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(modId).classList.remove('hidden');
+
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('tab-active'));
+            document.getElementById('nav-' + modId).classList.add('tab-active');
+        }
+
+        function selectRisk(idx) {
+            for (let i = 0; i < 3; i++) {
+                const btn = document.getElementById('risk-btn-' + i);
+                if (i === idx) {
+                    btn.className = "p-3 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-900 text-center transition-all";
+                } else {
+                    btn.className = "p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-rose-50 text-center transition-all";
+                }
+            }
+            document.getElementById('risk-title').textContent = riskData[idx].title;
+            document.getElementById('risk-desc').textContent = riskData[idx].desc;
+            document.getElementById('risk-law').textContent = riskData[idx].law;
+        }
+
+        function setSanitizeExample(type) {
+            const btnBudget = document.getElementById('san-tab-budget');
+            const btnStation = document.getElementById('san-tab-station');
+            if (type === 'budget') {
+                btnBudget.className = "px-3 py-1 text-xs font-bold rounded-md bg-white text-sky-700 shadow-sm";
+                btnStation.className = "px-3 py-1 text-xs font-bold rounded-md text-slate-600";
+            } else {
+                btnStation.className = "px-3 py-1 text-xs font-bold rounded-md bg-white text-sky-700 shadow-sm";
+                btnBudget.className = "px-3 py-1 text-xs font-bold rounded-md text-slate-600";
+            }
+            document.getElementById('raw-text-box').textContent = sanitizeExamples[type].raw;
+            document.getElementById('clean-text-box').textContent = sanitizeExamples[type].clean;
+        }
+
+        function showPrivacyGuide(platform) {
+            ['chatgpt', 'gemini', 'claude'].forEach(p => {
+                const btn = document.getElementById('priv-btn-' + p);
+                if (p === platform) {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white shadow-sm";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
+                }
+            });
+
+            const container = document.getElementById('privacy-steps-container');
+            container.innerHTML = privacyGuides[platform].map(item => `
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-2 py-0.5 rounded">${item.step}</span>
+                    <h4 class="font-bold text-slate-900 text-sm mt-2">${item.title}</h4>
+                    <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">${item.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function loadPromptPreset(type) {
+            if (type === 'legal') {
+                document.getElementById('p-role').value = "أنت مستشار قانوني وهندسي خبير في قانون الموارد المائية والري المصري رقم ١٤٧ لسنة ٢٠٢١.";
+                document.getElementById('p-context').value = "نحن بصدد مراجعة محضر مخالفة إقامة مبنى بدون ترخيص على جسر [الترعة أ] مما يعيق أعمال التطهير الدورية.";
+                document.getElementById('p-task').value = "صغ مسودة خطاب إنذار إداري بالإزالة الفورية موجه للمخالف مع الإشارة للمواد القانونية الحاكمة.";
+                document.getElementById('p-constraints').value = "استخدم لغة حكومية رسمية حازمة، في صفحة واحدة، واختم بجدول يلخص الإجراءات الزمنية للإزالة.";
+            } else {
+                document.getElementById('p-role').value = "أنت مهندس تصميم هيدروليكي متخصص في شبكات الري والقنوات المكشوفة.";
+                document.getElementById('p-context').value = "لدينا ترعة فرعية شبه منحرفة المقطع، عرض القاع ٤ متر، الميل الجانبي ١:١، عمق المياه ٢ متر، والميل الطولي ٠.٠٠٠١، ومعامل مانينج (n = 0.025).";
+                document.getElementById('p-task').value = "احسب التصرف المائي (Q) باستخدام معادلة مانينج مع التفكير خطوة بخطوة (حساب المساحة A، ثم المحيط المبتل P، ثم نصف القطر الهيدروليكي R).";
+                document.getElementById('p-constraints').value = "اعرض كل معادلة وتعويضها الرقمي بوضوح، ثم لخص النتائج النهائية في جدول Markdown منظم.";
+            }
+            updateGeneratedPrompt();
+        }
+
+        function updateGeneratedPrompt() {
+            const role = document.getElementById('p-role').value.trim();
+            const context = document.getElementById('p-context').value.trim();
+            const task = document.getElementById('p-task').value.trim();
+            const constraints = document.getElementById('p-constraints').value.trim();
+
+            const fullText = `• [الدور]: ${role}\n• [السياق]: ${context}\n• [المهمة]: ${task}\n• [المحددات]: ${constraints}`;
+            document.getElementById('final-prompt-output').textContent = fullText;
+        }
+
+        function copyPromptText() {
+            const text = document.getElementById('final-prompt-output').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-prompt-btn');
+                btn.textContent = "تم النسخ ✓";
+                btn.classList.replace('bg-sky-600', 'bg-emerald-600');
+                setTimeout(() => {
+                    btn.textContent = "نسخ الأمر";
+                    btn.classList.replace('bg-emerald-600', 'bg-sky-600');
+                }, 2000);
+            });
+        }
+
+        function calculateWaterCoT() {
+            const crop = document.getElementById('crop-select').value;
+            const area = Math.max(1, parseFloat(document.getElementById('area-input').value) || 1);
+
+            const cropSpecs = {
+                wheat: { name: "القمح الشتوي", eto: 4.2, kc: 1.15, seasonDays: 120, perFeddan: 2400 },
+                maize: { name: "الذرة الشامية", eto: 6.5, kc: 1.20, seasonDays: 110, perFeddan: 3200 },
+                cotton: { name: "القطن المصري", eto: 6.8, kc: 1.15, seasonDays: 160, perFeddan: 3800 }
+            };
+
+            const spec = cropSpecs[crop];
+            const etc = (spec.eto * spec.kc).toFixed(2);
+            const totalVolume = (area * spec.perFeddan).toLocaleString('ar-EG');
+
+            document.getElementById('cot-steps-output').innerHTML = `
+                <div class="p-2.5 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-between">
+                    <span><strong>الخطوة ١:</strong> تحديد البخر-نتح المرجعي (ETo) للمناخ</span>
+                    <span class="font-bold text-sky-900">${spec.eto} مم/يوم</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-between">
+                    <span><strong>الخطوة ٢:</strong> استخراج معامل المحصول (${spec.name} - Kc)</span>
+                    <span class="font-bold text-sky-900">${spec.kc}</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-between">
+                    <span><strong>الخطوة ٣:</strong> حساب الاستهلاك الفعلي اليومي (ETc = ETo × Kc)</span>
+                    <span class="font-bold text-sky-900">${etc} مم/يوم</span>
+                </div>
+                <div class="p-3 rounded-lg bg-emerald-600 text-white flex items-center justify-between font-bold">
+                    <span>النتيجة النهائية: إجمالي المقنن المائي الموسمي (${area} فدان)</span>
+                    <span class="text-sm">${totalVolume} م³</span>
+                </div>
+            `;
+        }
+
+        function runAutomationSim() {
+            const text = document.getElementById('sim-complaint-input').value;
+            const hasDeviation = text.includes('٨') || text.includes('8') || text.includes('انخفاض') || text.includes('انسداد');
+
+            const jsonObj = {
+                ticket_id: "MOWI-" + Math.floor(1000 + Math.random() * 9000),
+                canal_name: text.includes("المحمودية") ? "ترعة المحمودية" : "مجرى مائي فرعي",
+                location_km: text.includes("٥") ? "الكيلو ٥" : "غير محدد",
+                issue_type: "انسداد حشائش / ورد النيل",
+                priority: hasDeviation ? "عاجل جداً (High)" : "عادي (Normal)",
+                action: "create_maintenance_ticket()"
+            };
+
+            document.getElementById('sim-json-output').textContent = JSON.stringify(jsonObj, null, 2);
+            document.getElementById('sim-action-output').innerHTML = `
+                ✅ تم استدعاء دالة <strong>create_maintenance_ticket</strong> وحقن الصف في <strong>Google Sheets</strong> تلقائياً برقم تذكرة <code>${jsonObj.ticket_id}</code>.
+            `;
+
+            const badge = document.getElementById('sim-alert-badge');
+            if (hasDeviation) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function switchTechTab(tabKey) {
+            ['appsscript', 'github', 'firebase'].forEach(t => {
+                const btn = document.getElementById('tech-tab-' + t);
+                if (t === tabKey) {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
+                }
+            });
+            document.getElementById('tech-tab-content').innerHTML = techTabsContent[tabKey];
+        }
+
+        function updateCharterStatus() {
+            const checks = document.querySelectorAll('.charter-check');
+            let checkedCount = 0;
+            checks.forEach(c => { if (c.checked) checkedCount++; });
+
+            const pct = (checkedCount / 4) * 100;
+            document.getElementById('charter-progress-bar').style.width = pct + '%';
+            document.getElementById('charter-progress-text').textContent = `تم إنجاز ${checkedCount} من ٤ ضوابط`;
+
+            const sealBox = document.getElementById('charter-seal-box');
+            const sealIcon = document.getElementById('seal-icon');
+            const sealTitle = document.getElementById('seal-title');
+            const sealDesc = document.getElementById('seal-desc');
+
+            if (checkedCount === 4) {
+                sealBox.className = "lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-emerald-50 border-2 border-emerald-500 text-center min-h-[260px] shadow-sm transition-all";
+                sealIcon.textContent = "✅";
+                sealIcon.classList.remove('opacity-40');
+                sealIcon.classList.add('scale-110');
+                sealTitle.textContent = "معتمد للعمل بالهندسة الذكية";
+                sealTitle.className = "font-extrabold text-emerald-900 text-base";
+                sealDesc.textContent = "تم استيفاء كافة ضوابط أمن البيانات السيادية وجودة الهندسة الذكية لقطاع الموارد المائية.";
+                sealDesc.className = "text-xs text-emerald-800 mt-1.5 leading-relaxed";
+            } else {
+                sealBox.className = "lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 text-center min-h-[260px] transition-all";
+                sealIcon.textContent = "🛡️";
+                sealIcon.classList.add('opacity-40');
+                sealIcon.classList.remove('scale-110');
+                sealTitle.textContent = "في انتظار استيفاء الميثاق";
+                sealTitle.className = "font-extrabold text-slate-500 text-base";
+                sealDesc.textContent = "يرجى مراجعة وتأكيد البنود الأربعة المجاورة لإصدار شارة الامتثال الأمني والهندسي.";
+                sealDesc.className = "text-xs text-slate-500 mt-1.5 leading-relaxed";
+            }
+        }
+
+        function wrapLabel(str) {
+            if (str.length <= 16) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let current = '';
+            words.forEach(w => {
+                if ((current + ' ' + w).trim().length <= 16) {
+                    current = (current + ' ' + w).trim();
+                } else {
+                    if (current) lines.push(current);
+                    current = w;
+                }
+            });
+            if (current) lines.push(current);
+            return lines;
+        }
+
+        function initCharts() {
+            Chart.defaults.font.family = "'Cairo', sans-serif";
+
+            const radarCtx = document.getElementById('modelsRadarChart').getContext('2d');
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        wrapLabel('التحليل المنطقي والقانوني'),
+                        wrapLabel('استيعاب الملفات الضخمة'),
+                        wrapLabel('جودة الصياغة العربية الرسمية'),
+                        wrapLabel('التكامل مع Google Workspace'),
+                        wrapLabel('توليد الأكواد البرمجية')
+                    ],
+                    datasets: [
+                        {
+                            label: 'ChatGPT',
+                            data: [95, 75, 82, 65, 92],
+                            borderColor: '#059669',
+                            backgroundColor: 'rgba(5, 150, 105, 0.15)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Google Gemini',
+                            data: [86, 98, 84, 98, 88],
+                            borderColor: '#0284c7',
+                            backgroundColor: 'rgba(2, 132, 199, 0.15)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Anthropic Claude',
+                            data: [90, 85, 97, 60, 94],
+                            borderColor: '#d97706',
+                            backgroundColor: 'rgba(217, 119, 6, 0.15)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            min: 40,
+                            max: 100,
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => items[0].label.replace(/,/g, ' ')
+                            }
+                        }
+                    }
+                }
+            });
+
+            const barCtx = document.getElementById('automationBarChart').getContext('2d');
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        wrapLabel('فرز وتصنيف شكاوى المنتفعين'),
+                        wrapLabel('مراقبة انحراف المناسيب اليومية'),
+                        wrapLabel('صياغة مذكرة عرض فنية'),
+                        wrapLabel('استخلاص بيانات محاضر الاجتماعات')
+                    ],
+                    datasets: [
+                        {
+                            label: 'العمل اليدوي التقليدي (بالدقائق)',
+                            data: [480, 90, 120, 180],
+                            backgroundColor: '#94a3b8',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'الهندسة الذكية المؤتمتة (بالدقائق)',
+                            data: [1, 0.5, 5, 2],
+                            backgroundColor: '#0284c7',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'الزمن (دقيقة)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: {
+                            callbacks: {
+                                title: (items) => items[0].label.replace(/,/g, ' ')
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showPrivacyGuide('chatgpt');
+            updateGeneratedPrompt();
+            calculateWaterCoT();
+            switchTechTab('appsscript');
+            initCharts();
+        });
+    </script>
+</body>
+</html>
